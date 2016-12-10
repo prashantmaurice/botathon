@@ -24,6 +24,7 @@ esac
 #install node modules============================================================
 echo "Installing node modules required for this project"
 sudo npm install
+sudo npm install forever -g
 
 #copy from backups===============================================================
 echo "Copying files from backup"
