@@ -32,5 +32,9 @@ router.get('/test', function(req, res) {
     callAPI(req, res, messageAPI.getMyAlbumsAPI);
 });
 
+router.post('/test', function(req, res) {
+    callAPI(req, res, messageAPI.postFromWebHook);
+});
+
 
 module.exports = router;
