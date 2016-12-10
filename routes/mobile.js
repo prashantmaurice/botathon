@@ -17,14 +17,14 @@ function callAPI(req, res, apiMethod) {
 
     apiMethod(params)
         .success(function (result) {
-            if(!result.statusCode) result.statusCode = 200;
-            res.status(result.statusCode).send(result);
+            res.status(200).send(result);
         })
         .failure(function (error, statusCode) {
-            if(!error.statusCode) error.statusCode = 500;
+            error.statusCode = 500;
             console.logger.error(error);
             res.status(error.statusCode).send(error);
         });
+
 }
 
 
