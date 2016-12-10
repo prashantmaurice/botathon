@@ -1,0 +1,36 @@
+echo "###################################################################"
+echo "#              Welcome to this awesome botathon project .         #"
+echo "#  this setup has been created by maurice to make your life easy  #"
+echo "#                                                                 #"
+echo "###################################################################"
+echo
+echo "Started Setting up your project"
+
+echo "Do you want me to clone repo through ssh ?"
+
+#install nodemon=================================================================
+read -p "Shall I install nodemon (y/n)? " answer
+case ${answer:0:1} in
+    y|Y )
+        echo "Downloading nodemon and Installing...."
+        sudo npm install -g nodemon;
+        echo "Done installing nodemon"
+        break
+    ;;
+    * ) echo "Skipping installing nodemon";
+    ;;
+esac
+
+#install node modules============================================================
+echo "Installing node modules required for this project"
+sudo npm install
+
+#copy from backups===============================================================
+echo "Copying files from backup"
+cp ./config/development_backup.json ./config/development.json
+#cp ./.gitignore_backup ./.gitignore
+
+echo "\nSuccessfully completed setup....!\n"
+echo "> Run server using command 'nodemon app' "
+echo "> make sure mongodb is running, run 'mongo' to check whether u can log into current instance"
+echo "> incase of your mongodb credentials are not default, just change config/development file"
