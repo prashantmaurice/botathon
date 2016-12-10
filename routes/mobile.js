@@ -15,16 +15,22 @@ function callAPI(req, res, apiMethod) {
     if (req.method.toLowerCase() === 'put') { params = req.params; params.post = req.body; }
     if (req.method.toLowerCase() === 'delete') { params = req.params; params.post = req.body; }
 
-    apiMethod(params)
-        .success(function (result) {
-            res.status(200).send(result);
-        })
-        .failure(function (error, statusCode) {
-            error.statusCode = 500;
-            console.logger.error(error);
-            res.status(error.statusCode).send(error);
-        });
 
+    try{
+        apiMethod(params)
+            .success(function (result) {
+                res.status(200).send(result);
+            })
+            .failure(function (error, statusCode) {
+                error.statusCode = 500;
+                console.logger.error(error);
+                res.status(error.statusCode).send(error);
+            });
+
+    } catch(err) {
+        console.logger.error("BASE", err);
+        res.status(501).send(err);
+    }
 }
 
 
