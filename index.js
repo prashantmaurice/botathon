@@ -73,7 +73,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.set('port', process.env.NODE_PORT || config.nodeBackendServer.port || 9001);
+app.set('port', process.env.PORT || process.env.NODE_PORT || config.nodeBackendServer.port || 9001);
 
 if (require.main === module) {
     // Only run if run as main
